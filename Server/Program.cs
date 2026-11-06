@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace Server
 {
@@ -61,7 +62,52 @@ namespace Server
             Console.WriteLine("Сервер запущен");
             while (true)
             {
-
+                Socket Handler = sListener.Accept();
+                string Data = null;
+                byte[] Bytes = new byte[10485760];
+                int BytesRec = Handler.Receive(Bytes);
+                Data += Encoding.UTF8.GetString(Bytes, 0, BytesRec);
+                Console.Write("Сообщение от пользователя: " + Data + "\n");
+                string Reply = "";
+                ViewModelSend ViewModelSend = JsonConvert.DeserializeObject<ViewModelSend>(Data);
+                if (ViewModelSend != null)
+                {
+                    ViewModelMessage viewModelMessage;
+                    string[] DataCommand = ViewModelSend.Message.Split(new string[1] { " " }, StringSplitOptions.None);
+                    if (DataCommand[0] == "connect")
+                    {
+                        string[] DataMessage = ViewModelSend.Message.Split(new string[1] { " " }, StringSplitOptions.None);
+                        if (AutorizationUser(DataMessage[1], DataMessage[2]))
+                        {
+                            int IdUser = Users.FindIndex(x=>x.login == DataMessage[1] && x.password == DataMessage[2]);
+                            viewModelMessage = new ViewModelMessage("autorization", IdUser.ToString());
+                        }
+                        else
+                        {
+                            viewModelMessage = new ViewModelMessage("message", "не правильный логин и пароль пользователя");
+                        }
+                        Reply = JsonConvert.SerializeObject(viewModelMessage);
+                        byte[] message = Encoding.UTF8.GetBytes(Reply);
+                        Handler.Send(message);
+                    }
+                    else if (DataCommand[0] == "cd")
+                    {
+                        if (ViewModelSend.Id 1= -1)
+                        {
+                            string[] DataMessage = ViewModelSend.Message.Split(new string[1] { " " }, StringSplitOptions.None);
+                            List<string> FoldersFiles = new List<string>();
+                            if (DataMessage.Length == 1)
+                            {
+                                Users[ViewModelSend.Id].temp_src = Users[ViewModelSend.Id].src;
+                                FoldersFiles = GetDirectory(Users[ViewModelSend.Id].src);
+                            }
+                            else
+                            {
+                                string cdFolder == ""; //!!!!!!!!!!!!!!ДОДЕЛАТЬ!!!!!!!!!!
+                            }
+                        }
+                    }
+                }
             }
         }
     }
