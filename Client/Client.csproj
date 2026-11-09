@@ -33,12 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-=======
->>>>>>> 61761eb1c987c65f0803cbb4708a42a116cd0195
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -49,7 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <Compile Include="CheckCommand.cs" />
     <Compile Include="ConnectServer.cs" />
     <Compile Include="FileInfoFTP.cs" />
@@ -67,13 +63,6 @@
       <Project>{f30e1dad-4363-476e-9da1-8ff1fb7bb506}</Project>
       <Name>Common</Name>
     </ProjectReference>
-=======
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
->>>>>>> 61761eb1c987c65f0803cbb4708a42a116cd0195
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
