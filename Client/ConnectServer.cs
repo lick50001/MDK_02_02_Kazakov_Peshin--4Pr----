@@ -13,6 +13,7 @@ namespace Client
     public class ConnectServer
     {
         
+
         public static void Connect()
         {
             try
