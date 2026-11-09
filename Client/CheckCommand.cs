@@ -8,10 +8,10 @@ namespace Client
 {
     public class CheckCommand
     {
+        /// <summary> Функция проверки команд </summary>
         public static bool Check(string message)
         {
             bool BCommand = false;
-
             string[] DataMessage = message.Split(new string[] { " " }, StringSplitOptions.None);
 
             if (DataMessage.Length > 0)
@@ -63,13 +63,6 @@ namespace Client
                     {
                         BCommand = true;
                     }
-                }
-                else
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Неизвестная команда. Доступные команды: connect, cd, get, set");
-                    BCommand = false;
-                    Console.ResetColor();
                 }
             }
 

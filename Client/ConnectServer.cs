@@ -7,13 +7,13 @@ using System.Net;
 using System.Net.Sockets;
 using System.IO;
 using Newtonsoft.Json;
+using Ftp;
 
 namespace Client
 {
     public class ConnectServer
     {
-        
-
+        /// <summary> Подключение к серверу </summary>
         public static void Connect()
         {
             try
